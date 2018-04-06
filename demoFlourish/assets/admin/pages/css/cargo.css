@@ -1,0 +1,11 @@
+/***
+Cargo page
+***/
+
+#tableTicketCargoDailyDescription thead th {
+    text-align: center;
+}
+
+#searchContentTicketCargoDaily .dashboardTicketCargoDaily {
+    cursor: pointer;
+}

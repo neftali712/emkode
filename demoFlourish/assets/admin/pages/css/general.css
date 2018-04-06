@@ -1,0 +1,8 @@
+/***
+General page
+***/
+
+.portlet.calendar .fc-event .fc-title {
+  color: #000 !important;
+  font-weight: 600 !important;
+}

@@ -1,0 +1,240 @@
+/* here you can put your own css to customize and override the theme */
+
+/***
+Rounded Portlets
+***/
+/*
+.portlet {
+	border-radius: 4px !important;
+}
+
+.portlet .portlet-title {
+	border-radius: 4px 4px 0px 0px !important;
+}
+
+.portlet .portlet-body,
+.portlet .portlet-body .form-actions  {
+	border-radius: 0px 0px 4px 4px !important;
+}
+*/
+
+/* Margings */
+.margin-auto { margin: auto !important; }
+.margin-top-0 { margin-top: 0px !important; }
+.margin-right-0 { margin-right: 0px !important; }
+.margin-bottom-0 { margin-bottom: 0px !important; }
+.margin-left-0 { margin-left: 0px !important; }
+.margin-left-5 { margin-left: 5px !important; }
+.margin-left-5 { margin-left: 5px !important; }
+.margin-left-10 { margin-left: 10px !important; }
+.margin-right-5 { margin-right: 5px !important; }
+.margin-right-20 { margin-right: 20px !important; }
+.margin-left-20 { margin-left: 20px !important; }
+
+/* Text aligns */
+.text-align-center { text-align: center !important; }
+.text-align-left { text-align: left !important; }
+.text-align-right { text-align: right !important; }
+
+/* Floats */
+.float-left { float: left; }
+.float-right { float: right; }
+
+/* Fonts */
+.font-scheduled {
+	color: #f1c232 !important;
+}
+
+.font-delayed {
+	color: #cc4125 !important
+}
+
+/* Logo */
+.page-header .page-header-top .page-logo .logo-default {
+	/* margin: 7.5px 0 0 0 !important; */
+}
+
+/* Login */
+
+.login {
+    background-color: #F1F1F1 !important;
+}
+
+.login .content {
+    margin-top: 0px !important;
+    background: transparent !important;
+}
+
+.login .content h3.blue-steel {
+	color: #4B77BE;
+}
+
+/* Theme panel */
+.theme-panel { min-width: 337.5px !important; }
+
+/* Textarea no resize */
+textarea.form-control {
+	resize: none !important;
+}
+
+/*** Select2 No border right **/
+.select2-no-border-right .select2-choice {
+	border-top-right-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+}
+
+/*
+ * TableTools styles
+ */
+.table tbody tr.active td,
+.table tbody tr.active th {
+	background-color: #017ebc;
+	color: white;
+	border-color: #0075b0 !important;
+}
+
+.table tbody tr.active:hover td,
+.table tbody tr.active:hover th {
+	background-color: #0075b0 !important;
+}
+
+.table tbody tr.active a {
+	color: white;
+}
+
+.table-striped tbody tr.active:nth-child(odd) td,
+.table-striped tbody tr.active:nth-child(odd) th {
+	background-color: #017ebc;
+}
+
+.table tbody tr.paid td,
+.table tbody tr.paid th {
+	background-color: #b6d7a8;
+	color: #000;
+	border-color: #6aa84f !important;
+}
+
+.table tbody tr.paid:hover td,
+.table tbody tr.paid:hover th {
+	background-color: #6aa84f !important;
+}
+
+.table tbody tr.paid a {
+	color: #000;
+}
+
+.table-striped tbody tr.paid:nth-child(odd) td,
+.table-striped tbody tr.paid:nth-child(odd) th {
+	background-color: #b6d7a8;
+}
+
+.table tbody tr.outstanding td,
+.table tbody tr.outstanding th {
+	background-color: #fff;
+	color: #000;
+	border-color: #d9d9d9 !important;
+}
+
+.table tbody tr.outstanding:hover td,
+.table tbody tr.outstanding:hover th {
+	background-color: #d9d9d9 !important;
+}
+
+.table tbody tr.outstanding a {
+	color: #000;
+}
+
+.table-striped tbody tr.outstanding:nth-child(odd) td,
+.table-striped tbody tr.outstanding:nth-child(odd) th {
+	background-color: #fff;
+}
+
+.table tbody tr.scheduled td,
+.table tbody tr.scheduled th {
+	background-color: #ffe599;
+	color: #000;
+	border-color: #f1c232 !important;
+}
+
+.table tbody tr.scheduled:hover td,
+.table tbody tr.scheduled:hover th {
+	background-color: #f1c232 !important;
+}
+
+.table tbody tr.scheduled a {
+	color: #000;
+}
+
+.table-striped tbody tr.scheduled:nth-child(odd) td,
+.table-striped tbody tr.scheduled:nth-child(odd) th {
+	background-color: #ffe599;
+}
+
+.table tbody tr.delayed td,
+.table tbody tr.delayed th {
+	background-color: #dd7e6b;
+	color: #000;
+	border-color: #cc4125 !important;
+}
+
+.table tbody tr.delayed:hover td,
+.table tbody tr.delayed:hover th {
+	background-color: #cc4125 !important;
+}
+
+.table tbody tr.delayed a {
+	color: #000;
+}
+
+.table-striped tbody tr.delayed:nth-child(odd) td,
+.table-striped tbody tr.delayed:nth-child(odd) th {
+	background-color: #dd7e6b;
+}
+
+/* Calendar */
+.fc-event .fc-title { font-size: 11px !important; }
+.portlet.calendar .fc-event .fc-title { padding: 3px !important; }
+
+/* CSS media query */
+@media (max-width:991px){
+	.scroller label.margin-bottom-0 {
+		margin-bottom: 5px !important;
+	}
+	
+	.scroller .form-group.margin-bottom-0 {
+		margin-bottom: 15px !important;
+	}
+
+	.btn-list-product-menu{
+		float: none !important;
+		width: auto;
+		margin: 0 0 20px 0;
+	}
+}
+
+/* MENU BUTTON MARGIN */
+.btn-list-product-menu{
+	margin-top: 8px;
+}
+
+.refresh{
+	position: fixed;
+	width: 100%;
+	height: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	top: 0px;
+	left: 0px;
+	z-index: 10000;
+	display: none;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}

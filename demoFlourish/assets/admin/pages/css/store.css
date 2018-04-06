@@ -1,0 +1,41 @@
+/***
+Store page
+***/
+
+/* Selected todo items */
+.todo-tasklist-item-background-selected {
+	background: #E5E5E5 !important;
+}
+
+#contentReportProductInputOutput table tbody tr td:nth-child(3), #contentReportProductInputOutput table tbody tr td:nth-child(4) {
+	text-align: right;
+}
+
+#contentReportProductInputOutput table thead th, #contentReportProductInputOutput table tbody td {
+    text-align: center;
+}
+
+#tableWarehouseInput .needReorderPoint {
+    background-color: #fff2cc;
+    /* background-color: #fce5cd; */
+}
+#tableInputProductReport thead tr:nth-child(2) th{
+	border-top: 1px solid lightgray;
+}
+#tableInputProductReport thead tr:nth-child(2) th:last-child{
+	border-right: 1px solid lightgray;
+}
+#tableInputProductReport thead th{
+	text-align: center;
+}
+#tableInputProductReport tbody td:nth-child(n+2) {
+	text-align: center;
+}
+#tableInputProductReport thead>tr:nth-child(2) th{
+	width: 4%;
+}
+
+/* SECTION INPUT/OUTPUT REPORT*/
+#tableReportInputOutput tbody>tr>td:nth-child(n+2), #tableReportInputOutput thead>tr>th:nth-child(n+1), #tableReportStoreMovement thead>tr>th:nth-child(n+1), #tableReportStoreMovement tbody>tr>td:nth-child(n+2) {
+	text-align: center;
+}

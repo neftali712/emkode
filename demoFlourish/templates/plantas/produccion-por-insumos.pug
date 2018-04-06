@@ -1,0 +1,217 @@
+- $sessionAdmin = fSession::get('botanasAdmin')
+.row
+  .col-md-12
+    .portlet.light
+      .portlet-title
+        .caption
+          i.icon-icon-basket-loaded.font-blue-steel
+          span.caption-subject.font-blue-steel.bold.uppercase=$sections[$section]['subsections'][$subsection]['title']
+          span.caption-helper=$sections[$section]['subsections'][$subsection]['subtitle']
+      #messages
+      .portlet-body
+        .row
+          .col-md-12
+            .col-md-4.text-right
+              h4: b Planta:
+            .col-md-4
+              if fAuthorization::checkAuthLevel('super')
+                - $stores = fORMDatabase::retrieve()->query("SELECT * FROM store WHERE status=1 ORDER BY name ASC")->asObjects()
+              else
+                - $stores = fORMDatabase::retrieve()->query("SELECT * FROM store WHERE id_store IN (SELECT id_store FROM store_admin_permission WHERE id_admin = '" . $sessionAdmin['idAdmin'] . "' AND storage_type = 2) AND status = 1 ORDER BY name ASC")->asObjects()
+              select#id_store.table-group-action-input.form-control.select2(name="id_store")
+                //- print_r($stores)
+                if $stores->countReturnedRows() > 0
+                  each $store in $stores
+                    option(value=$store->id_store)= $store->name
+        .tabbable
+          ul.nav.nav-tabs
+            li#production.active
+              a(href='#tab_production' data-toggle="tab") Producción
+            li.hidden
+              a(href='#tab_reports_detail' data-toggle="tab") Reportes detallados
+            li
+              a(href='#tab_report_list' data-toggle="tab") Reportes anteriores
+        .tab-content
+          #tab_production.tab-pane.active
+            .row
+              .col-md-6
+                h4: b Fecha día abierto #[span#openedDay]
+              .col-md-6.text-right
+                .btn-group
+                  button#buttonAddProduction.btn.btn-primary.green(type='button' disabled=true) Nueva producción #[i.fa.fa-plus]
+            br
+            .row
+              .col-md-12
+                .table-container
+                  table#tableProductionByInput.table.table-striped.table-hover.table-bordered
+                    thead: tr
+                      th(style='width: 10%') # de Reporte
+                      th Responsable
+                      th Aprobó
+                      th Tipo reporte
+                      th Observaciones
+                      th Fecha
+                      th Acciones
+                    tbody
+          //- End tab production report
+          #tab_reports_detail.tab-pane
+            .row
+              .col-md-2.col-md-offset-2.text-right
+                h4: b Fecha inicial:
+              .col-md-2
+                .input-icon.right
+                  i.fa.fa-calendar
+                  input#detailedReportStartDate.form-control.date-picker(type='text' name='detailedReportStartDate' value=$todayFormat)
+              .col-md-1
+                h4.text-right: b Fecha final:
+              .col-md-2
+                .input-icon.right
+                  i.fa.fa-calendar
+                  input#detailedReportEndDate.form-control.date-picker(type='text' name='detailedReportEndDate' value=$todayFormat)
+            br
+            .row
+              .col-md-12
+                table#tableDetailedProductionReport.table.table-bordered.table-hover.table-striped
+                  thead
+                    tr
+                      th Producto
+                      th Cantidad producida
+                      th Entradas de plantas
+                      th Mermas
+                      th Ajustes
+                  tbody
+          #tab_report_list.tab-pane
+            .row
+              .col-md-12
+                .col-md-2.text-right.col-md-offset-1
+                  h4: b Fecha inicial:
+                .col-md-2
+                  .input-icon.right
+                    i.fa.fa-calendar
+                    input#starDateOldReports.form-control.date-picker(type='text' name='arrival_date' value=$todayFormat)
+                .col-md-1
+                  h4.text-right: b Fecha final:
+                .col-md-2
+                  .input-icon.right
+                    i.fa.fa-calendar
+                    input#endDateOldReports.form-control.date-picker(type='text' name='arrival_date' value=$todayFormat)
+                .col-md-2
+                  .form-group
+                    .input-group
+                      .icheck-inline.hidden
+                        input#detail_reports.icheck(type="checkbox" checked="checked" name="detail_reports")
+                        label(for="detail_reports") Desglosar por categoría
+            br
+            .row
+              .col-md-12
+                .table-container
+                  table#tableAllProductionByInput.table.table-striped.table-hover.table-bordered
+                    thead
+                      tr
+                        th(style='width: 10%') # de Reporte
+                        th Responsable
+                        th Aprobó
+                        th Observaciones
+                        th Fecha
+                        th Acciones
+                    tbody
+            .row
+              .col-md-6#input_reports_list
+              .col-md-6#product_reports_list
+          //- End tab report list
+// modal
+#modalAddProduction.modal.fade(tabindex='-1' aria-hidden=true)
+  .modal-dialog.modal-lg(style='width: 90%')
+    .modal-content
+      .modal-header
+        button.close(type='button' data-dismiss='modal' aria-hidden=true)
+        .row
+          .col-md-4
+            h4.modal-title Reportar producción - #[b#title_store_name]
+          .col-md-4
+            - $product_concepts = ProductType::getAll()
+            select#product_type(name="product_type" class="form-control select2 text-center" disabled=true)
+              option(value="") ---------
+              each $type in $product_concepts
+                option(value=$type->getIdProductType())= $type->getDescription()
+      //- End Modal Header
+      .modal-body
+        .scroller(style='height: 470px' data-always-visible='1' data-rail-visible1='1')
+          form#formAddProductionByInput.form-horizontal(action='/do.php' method='POST')
+            input#whatToDo(name='whatToDo' type='hidden' value='production_save')
+            input#requestToken(type='hidden' name='requestToken' value=$token_produccion_por_insumos)
+            .form.form-body
+              #modal-messages-prduction-by-input
+              .alert.alert-danger.display-hide
+                button.close(data-close='alert') Hay algunos errores en el formulario. Por favor, revisa abajo.
+              .row
+                .col-xs-3
+                  h3(style='margin-top: 5px; margin-bottom: 5px')
+                    b Insumos
+                .col-xs-3.text-right
+                  .btn-group
+                    button#buttonAddProductionByInput.btn.green(type='button') Nueva fila #[i.fa.fa-plus]
+                .col-xs-3
+                  h3(style='margin-top: 5px; margin-bottom: 5px;')
+                    b Productos
+                .col-xs-3.text-right
+                  .btn-group
+                    button#buttonAddProduct.btn.green(type='button') Nueva fila #[i.fa.fa-plus]
+              .row
+                .col-md-6
+                  .table-toolbar
+                  table#tableAddProductionByInput.table.table-striped.table-hover.table-bordered
+                    thead
+                      tr
+                        th Cantidad
+                        th Mermas
+                        th Insumo
+                        th Editar
+                        th Eliminar
+                    tbody
+                .col-md-6
+                  .table-toolbar
+                  table#tableAddProduct.table.table-striped.table-hover.table-bordered
+                    thead
+                      tr
+                        th Cantidad
+                        th Mermas
+                        th Producto
+                        th Editar
+                        th Eliminar
+                    tbody
+              .row
+                .col-md-12
+                  .form-group
+                    .col-md-12
+                      label.control-label Observaciones:
+                        span#icon-observations
+                    .col-md-8
+                      .input-icon.right
+                        i.fa
+                        textarea#reason.form-control(name="reason" placeholder="Opcional" rows="3")
+                    .col-md-4
+                      .row
+                        .col-xs-6.text-right
+                          label.control-label Kilos de desperdicio Producto
+                        .col-xs-6
+                          input#product_waste.form-control(placeholder="Desperdicio Producto" type="number" value="0")
+                      .row
+                        .col-xs-6.text-right
+                          label.control-label Kilos de desperdicio polvo sazonador
+                        .col-xs-6
+                          input#seasoning_waste.form-control(placeholder="Polvo sazonador" type="number" value="0")
+                      .row
+                        .col-xs-6.text-right
+                          label.control-label Lotes realizados
+                        .col-xs-6
+                          input#production_batches.form-control(placeholder="Tareas realizadas" type="number" value="0" name="production_batches")
+          //- End form add production by input
+      //- End modal body
+      .modal-footer
+        button.btn.default(type='button' data-dismiss='modal') Cerrar
+        button#buttonSaveProductionByInput.btn.green-haze.ladda-button(data-style='slide-up')
+          i.fa.fa-save &nbsp;
+          span.ladda-label Guardar
+      //- End modal footer
+// /.modal

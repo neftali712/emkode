@@ -1,0 +1,46 @@
+/***
+Account page
+***/
+
+.portlet .dashboard-stat:last-child {
+	margin-bottom: 15px !important;
+}
+
+.dashboard-stat .details .number  {
+	font-size: 28px !important;
+}
+
+.payment-content .scroller {
+	padding: 0px !important;
+}
+
+.fileinput-filename {
+	font-size: 13px !important;
+	vertical-align: middle !important;
+	max-width: 205px !important;
+	overflow: hidden;
+}
+
+.fileinput.input-icon i {
+	position: static;
+}
+
+#contentTableListExpenseInvoice .dataTables_wrapper .dataTables_filter {
+	display: none;
+}
+
+#contentTableListExpenseSalesReceipt .dataTables_wrapper .dataTables_filter {
+	display: none;
+}
+
+i.icon {
+	margin-right: 5px;
+}
+
+.ms-container {
+	width: 99% !important;
+}
+
+.ms-container .ms-list {
+	height: 300px;
+}

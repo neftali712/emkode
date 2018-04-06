@@ -1,0 +1,79 @@
+/***
+Sale Report page
+***/
+
+#modalRequisitionDetail .header-logo {
+    text-align: center;
+}
+
+#modalRequisitionDetail .header-info {
+    text-align: center; 
+    font-weight: bold;
+}
+
+#modalRequisitionDetail .driver,
+#modalRequisitionDetail .ticket,
+#modalRequisitionDetail .client,
+#modalRequisitionDetail .date {
+    font-weight: bold;
+}
+
+#modalRequisitionDetail .table-info {
+    border: 0;
+    border-top: 1px;
+    border-bottom: 1px;
+    border-style: dotted;
+}
+ 
+#modalRequisitionDetail .table-info td {
+    border: 0;
+}
+
+#modalRequisitionDetail .table-products {
+    border: 0;
+    border-style: dotted;
+}
+
+#modalRequisitionDetail .table-products tbody {
+    border: 0;
+}
+ 
+#modalRequisitionDetail .table-products th {
+    border: 0;
+    border-bottom: 1px;
+    border-style: dotted;
+}
+
+#modalRequisitionDetail .table-products td {
+    border: 0;
+    font-size: 11px;
+}
+
+#modalRequisitionDetail .total-info {
+    text-align: center;
+    font-size: 20px;
+}
+
+#modalRequisitionDetail .total {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#tableSaleDriver tbody td:nth-child(5) {
+    text-align: right;
+}
+
+#tableRequisition tbody td:nth-child(4) {
+    text-align: right;
+}
+
+#tableReportPrices>thead>tr:nth-child(2)>th {
+    border-top: 1px solid lightgray;
+}
+#tableReportPrices>thead>tr:nth-child(2)>th:last-child {
+    border-right: 1px solid lightgray;
+}
+
+#tableReportProduct>tbody td:nth-child(n+1){
+    text-align: center;
+}

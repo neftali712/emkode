@@ -1,0 +1,10 @@
+#AuthUserFile /home/emkodeco/public_html/botanas/test/.htpasswd
+#AuthType Basic
+#AuthName EnterPassword
+
+#require user admin
+
+#<Files "pedidos.php">
+ #Require valid-user
+ #require user admin
+#</Files>

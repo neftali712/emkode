@@ -1,0 +1,36 @@
+version: "2"
+services:
+  botanas:
+    container_name: test
+    image: bylexus/apache-php56:v2
+    ports:
+      - "4500:80"
+      - "442:442"
+    volumes:
+      - .:/var/www/
+    environment:
+      PHP_ERROR_REPORTING: 'E_ALL & ~E_STRICT'
+    depends_on:
+      - mysqlserver
+
+  mysqlserver:
+    container_name: mysql_test
+    image: mysql:5.7.17
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: test
+    volumes:
+      - ../db:/var/lib/mysql
+      - ./db/startup:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    container_name: phpmyadmin_test
+    image: phpmyadmin/phpmyadmin:4.7
+    environment:
+      PMA_HOST: mysqlserver
+    ports:
+      - "4600:80"
+    depends_on:
+      - mysqlserver
+    volumes:
+      - ../conf/conf.php:/etc/phpmyadmin/config.user.inc.php

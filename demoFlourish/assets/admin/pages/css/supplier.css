@@ -1,0 +1,26 @@
+/***
+Supplier page
+***/
+
+#contentTableListSupplierInvoice .dataTables_wrapper .dataTables_filter {
+	display: none;
+}
+
+#contentTableListSupplierSalesReceipt .dataTables_wrapper .dataTables_filter {
+	display: none;
+}
+
+i.icon {
+	margin-right: 5px;
+}
+
+.fileinput-filename {
+	font-size: 13px !important;
+	vertical-align: middle !important;
+	max-width: 205px !important;
+	overflow: hidden;
+}
+
+.fileinput.input-icon i {
+	position: static;
+}
